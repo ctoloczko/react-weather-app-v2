@@ -27,22 +27,23 @@ export default function Weather() {
         <div className="Column-body">
           <div className="container">
             <div className="row">
-              <div className="col-sm-6 p-0">
+              <div className="col-sm-7 p-0">
                 <h3>Stockholm</h3>
-                <h2>16°C|F</h2>
+                <h2>
+                  16°<span className="Unit">C | F</span>
+                </h2>
                 <p>Feels like: 17° </p>
                 <p>Humidity: 42%</p>
                 <p>Wind: 23km/h</p>
                 <p>Pressure: 1200 MB</p>
               </div>
-              <div className="col-sm-6">
-                <h3>
-                  {" "}
-                  <img
-                    src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
-                    alt="weather-icon"
-                  ></img>
-                </h3>
+              <div className="col-sm-5 Icon-description">
+                {" "}
+                <img
+                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+                  alt="weather-icon"
+                ></img>
+                <p>Sunny</p>
               </div>
             </div>
           </div>
