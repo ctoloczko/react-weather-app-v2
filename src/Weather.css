@@ -1,0 +1,13 @@
+.Weather {
+  max-width: 400px;
+  margin: 20px;
+  color: #ffffff;
+}
+
+.Weather .Column-header {
+  background-color: #3e5674;
+}
+
+.Weather .Column-body {
+  background-color: #2a3f58;
+}
