@@ -14,3 +14,10 @@ footer {
   text-align: center;
   font-weight: 200;
 }
+
+footer a {
+  text-decoration: none;
+  color: rgb(7, 8, 10, 0.7);
+  font-weight: 400;
+  cursor: pointer;
+}

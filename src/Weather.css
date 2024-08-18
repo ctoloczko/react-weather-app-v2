@@ -25,7 +25,7 @@
 .Weather .Icon-description {
   display: grid;
   place-items: center;
-  padding: 100px 0;
+  padding: 70px 0 50px 0;
 }
 
 .Weather h3 {

@@ -6,8 +6,13 @@ export default function App() {
     <div className="App">
       <Weather defaultCity="Sopot" />
       <footer>
-        This project was coded by Celina Toloczko-Mastalerz and is open-sourced
-        on GitHub and hosted on Netlify.{" "}
+        This project was coded by{" "}
+        <a href="https://www.linkedin.com/in/celinatoloczko/">
+          Celina Toloczko-Mastalerz
+        </a>{" "}
+        and is open-sourced on{" "}
+        <a href="https://github.com/ctoloczko/react-weather-app-v2">GitHub</a>{" "}
+        and hosted on <a href="https://skypix.netlify.app/">Netlify</a> .{" "}
       </footer>
     </div>
   );
