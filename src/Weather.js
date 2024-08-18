@@ -5,16 +5,15 @@ export default function Weather() {
   return (
     <>
       <div className="Weather">
-        <div className="col d-flex ">
-          <form className="d-flex">
-            <input
-              className="me-1 search-input "
-              type="search"
-              placeholder="Enter a city"
-            />
-            <input className="search-button" type="submit" value="🔎" />
-          </form>
-        </div>
+        <form className="d-flex Weather-search">
+          <input
+            className="me-1 Search-input "
+            type="search"
+            placeholder="Enter a city"
+          />
+          <input className="Search-button" type="submit" value="🔎" />
+        </form>
+
         <div className="Column-header">
           <p>August 18</p>
 
@@ -26,12 +25,10 @@ export default function Weather() {
         </div>
 
         <div className="Column-body">
-          <div>
-            <h3>Stockholm</h3>
-          </div>
           <div className="container">
             <div className="row">
-              <div className="col-sm-6">
+              <div className="col-sm-6 p-0">
+                <h3>Stockholm</h3>
                 <h2>16°C|F</h2>
                 <p>Feels like: 17° </p>
                 <p>Humidity: 42%</p>
