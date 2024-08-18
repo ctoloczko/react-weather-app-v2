@@ -31,14 +31,14 @@ export default function Weather() {
           </div>
           <div className="container">
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-sm-6">
                 <h2>16°C|F</h2>
                 <p>Feels like: 17° </p>
                 <p>Humidity: 42%</p>
                 <p>Wind: 23km/h</p>
                 <p>Pressure: 1200 MB</p>
               </div>
-              <div className="col-md-6">
+              <div className="col-sm-6">
                 <h3>
                   {" "}
                   <img
