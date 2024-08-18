@@ -1,58 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./Weather.css";
 
-export default function Weather() {
-  return (
-    <>
-      <div className="Weather">
-        <form className="d-flex Weather-search">
-          <input
-            className="me-1 Search-input "
-            type="search"
-            placeholder="Enter a city"
-          />
-          <input className="Search-button" type="submit" value="🔎" />
-        </form>
+export default function Weather(props) {
+  const [weatherData, setWeatherData] = useState({ ready: false });
+  function handleResponse(response) {
+    setWeatherData({
+      temperature: response.data.temperature.current,
+      trueTemperature: response.data.temperature.feels_like,
+      pressure: response.data.temperature.pressure,
+      wind: response.data.wind.speed,
+      humidity: response.data.temperature.humidity,
+      city: response.data.city,
+      description: response.data.condition.description,
+      iconUrl: response.data.condition.icon_url,
+      ready: true,
+      date: "August, 18th",
+      day: "Sunday",
+      time: "20:32PM",
+    });
+  }
 
-        <div className="Column-header">
-          <p>August 18</p>
+  if (weatherData.ready) {
+    return (
+      <>
+        <div className="Weather">
+          <form className="d-flex Weather-search">
+            <input
+              className="me-1 Search-input "
+              type="search"
+              placeholder="Enter a city"
+            />
+            <input className="Search-button" type="submit" value="🔎" />
+          </form>
 
-          <div className="d-flex justify-content-between">
-            {" "}
-            <p>Sunday</p>
-            <p>10:29 AM</p>
+          <div className="Column-header text-uppercase">
+            <p>{weatherData.date}</p>
+
+            <div className="d-flex justify-content-between">
+              {" "}
+              <p>{weatherData.day}</p>
+              <p>{weatherData.time}</p>
+            </div>
           </div>
-        </div>
 
-        <div className="Column-body">
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-7 p-0">
-                <h3>Stockholm</h3>
-                <h2>
-                  16°<span className="Unit">C | F</span>
-                </h2>
-                <p>Feels like: 17° </p>
-                <p>Humidity: 42%</p>
-                <p>Wind: 23km/h</p>
-                <p>Pressure: 1200 MB</p>
-              </div>
-              <div className="col-sm-5 Icon-description">
-                {" "}
-                <img
-                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
-                  alt="weather-icon"
-                ></img>
-                <p>Sunny</p>
+          <div className="Column-body">
+            <div className="container">
+              <div className="row">
+                <div className="col-sm-7 p-0">
+                  <h3>{weatherData.city}</h3>
+                  <h2>
+                    {Math.round(weatherData.temperature)}°
+                    <span className="Unit">C | F</span>
+                  </h2>
+                  <p>Feels like: {Math.round(weatherData.trueTemperature)}° </p>
+                  <p>Humidity: {weatherData.humidity}%</p>
+                  <p>Wind: {Math.round(weatherData.wind)} km/h</p>
+                  <p>Pressure: {weatherData.pressure} MB</p>
+                </div>
+                <div className="col-sm-5 Icon-description">
+                  {" "}
+                  <img src={weatherData.iconUrl} alt="weather-icon"></img>
+                  <p className="text-capitalize">{weatherData.description}</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <footer>
-          This project was coded by Celina Toloczko-Mastalerz and is
-          open-sourced on GitHub and hosted on Netlify.{" "}
-        </footer>
-      </div>
-    </>
-  );
+      </>
+    );
+  } else {
+    const apiKey = "8eatdeae3d0b8e63a64512c0d2f3a54o";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+    return "Loading...";
+  }
 }
