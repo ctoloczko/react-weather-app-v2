@@ -26,19 +26,29 @@ export default function FormattedDate(props) {
   ];
   let day = days[props.date.getDay()];
   let hours = props.date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
   let minutes = props.date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
   let date = props.date.getDate();
   let month = months[props.date.getMonth()];
   return (
     <>
-      <div>{day}</div>
+      <div>
+        <strong> {day}</strong>
+      </div>
 
       <div className="d-flex justify-content-between">
         {" "}
         <p>
-          {date} {month}
+          {date}. {month}
         </p>
-        <p>Time</p>
+        <p>
+          {hours}:{minutes}
+        </p>
       </div>
     </>
   );

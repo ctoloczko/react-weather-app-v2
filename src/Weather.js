@@ -18,8 +18,6 @@ export default function Weather(props) {
       iconUrl: response.data.condition.icon_url,
       ready: true,
       date: new Date(response.data.time * 1000),
-      day: "Sunday",
-      time: "20:32PM",
     });
   }
 
