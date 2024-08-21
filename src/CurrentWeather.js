@@ -1,0 +1,34 @@
+import React from "react";
+import FormattedDate from "./FormattedDate";
+
+export default function CurrentWeather(props) {
+  return (
+    <>
+      <div className="Column-header text-uppercase">
+        <FormattedDate date={props.data.date} />{" "}
+      </div>
+      <div className="Column-body">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-7 p-0">
+              <h3>{props.data.city}</h3>
+              <h2>
+                {Math.round(props.data.temperature)}°
+                <span className="Unit">C | F</span>
+              </h2>
+              <p>Feels like: {Math.round(props.data.trueTemperature)}° </p>
+              <p>Humidity: {props.data.humidity}%</p>
+              <p>Wind: {Math.round(props.data.wind)} km/h</p>
+              <p>Pressure: {props.data.pressure} MB</p>
+            </div>
+            <div className="col-sm-5 Icon-description">
+              {" "}
+              <img src={props.data.iconUrl} alt="weather-icon"></img>
+              <p className="text-capitalize">{props.data.description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
