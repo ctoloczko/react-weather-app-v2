@@ -31,6 +31,7 @@ export default function Weather(props) {
   function handleSubmit(event) {
     event.preventDefault();
     search();
+    setCity("");
   }
 
   function handleCityChange(event) {
@@ -47,6 +48,7 @@ export default function Weather(props) {
               className="me-1 Search-input "
               type="search"
               placeholder="Enter a city"
+              value={city}
             />
             <input className="Search-button" type="submit" value="🔎" />
           </form>
