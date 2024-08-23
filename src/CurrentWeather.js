@@ -1,5 +1,6 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function CurrentWeather(props) {
   return (
@@ -12,10 +13,8 @@ export default function CurrentWeather(props) {
           <div className="row">
             <div className="col-sm-7 p-0">
               <h3>{props.data.city}</h3>
-              <h2>
-                {Math.round(props.data.temperature)}°
-                <span className="Unit">C | F</span>
-              </h2>
+              <WeatherTemperature celsius={props.data.temperature} />
+
               <p>Feels like: {Math.round(props.data.trueTemperature)}° </p>
               <p>Humidity: {props.data.humidity}%</p>
               <p>Wind: {Math.round(props.data.wind)} km/h</p>

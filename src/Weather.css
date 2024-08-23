@@ -43,7 +43,9 @@
   padding: 12px 0 0 10px;
   font-weight: 300;
 }
-
+.Weather .Unit a {
+  color: #ffffff !important;
+}
 .Weather h2 {
   font-size: 58px;
 }
