@@ -11,7 +11,7 @@ export default function CurrentWeather(props) {
       <div className="Column-body">
         <div className="container">
           <div className="row">
-            <div className="col-sm-7 p-0">
+            <div className="col-sm-6 p-0">
               <h3>{props.data.city}</h3>
               <WeatherTemperature celsius={props.data.temperature} />
 

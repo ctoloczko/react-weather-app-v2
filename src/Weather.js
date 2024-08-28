@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CurrentWeather from "./CurrentWeather";
+import WeatherForecast from "./WeatherForecast";
 import axios from "axios";
 import { Hearts } from "react-loader-spinner";
 import "./Weather.css";
@@ -52,7 +53,16 @@ export default function Weather(props) {
             />
             <input className="Search-button" type="submit" value="🔎" />
           </form>
-          <CurrentWeather data={weatherData} />
+          <div>
+            <div className="row g-1">
+              <div className="col-5">
+                <CurrentWeather data={weatherData} />
+              </div>
+              <div className="col-7">
+                <WeatherForecast />
+              </div>
+            </div>
+          </div>
         </div>
       </>
     );
