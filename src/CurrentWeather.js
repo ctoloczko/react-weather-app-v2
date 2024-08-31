@@ -17,7 +17,7 @@ export default function CurrentWeather(props) {
 
               <p>Feels like: {Math.round(props.data.trueTemperature)}° </p>
               <p>Humidity: {props.data.humidity}%</p>
-              <p>Wind: {Math.round(props.data.wind)} km/h</p>
+              <p>Wind: {Math.round(props.data.wind)} m/s</p>
               <p>Pressure: {props.data.pressure} MB</p>
             </div>
             <div className="col-sm-5 Icon-description">

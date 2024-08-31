@@ -9,8 +9,8 @@ export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
   function handleResponse(response) {
-    console.log(response.data);
     setWeatherData({
+      coordinates: response.data.coordinates,
       temperature: response.data.temperature.current,
       trueTemperature: response.data.temperature.feels_like,
       pressure: response.data.temperature.pressure,
@@ -23,11 +23,6 @@ export default function Weather(props) {
       date: new Date(response.data.time * 1000),
     });
   }
-  function search() {
-    const apiKey = "8eatdeae3d0b8e63a64512c0d2f3a54o";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -37,6 +32,12 @@ export default function Weather(props) {
 
   function handleCityChange(event) {
     setCity(event.target.value);
+  }
+
+  function search() {
+    const apiKey = "8eatdeae3d0b8e63a64512c0d2f3a54o";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
   }
 
   if (weatherData.ready) {
@@ -59,7 +60,7 @@ export default function Weather(props) {
                 <CurrentWeather data={weatherData} />
               </div>
               <div className="col-7">
-                <WeatherForecast />
+                <WeatherForecast data={weatherData} />
               </div>
             </div>
           </div>
