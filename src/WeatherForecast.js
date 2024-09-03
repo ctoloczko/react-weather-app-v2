@@ -1,35 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
+import WeatherForecastDay from "./WeatherForecastDay";
 
 export default function WeatherForecast(props) {
+  let [loaded, setLoaded] = useState(false);
+  let [forecast, setForecast] = useState(null);
+
   function handleResponse(response) {
-    console.log(response.data);
+    setForecast(response.data.daily);
+    setLoaded(true);
   }
-  let apiKey = "8eatdeae3d0b8e63a64512c0d2f3a54o";
-  let longitude = props.data.coordinates.longitude;
-  let latitude = props.data.coordinates.latitude;
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
 
-  axios.get(apiUrl).then(handleResponse);
+  if (loaded) {
+    return <WeatherForecastDay data={forecast[0]} />;
+  } else {
+    let apiKey = "8eatdeae3d0b8e63a64512c0d2f3a54o";
+    let longitude = props.data.coordinates.longitude;
+    let latitude = props.data.coordinates.latitude;
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
 
-  return (
-    <div className="col-2">
-      {" "}
-      <div className="Column-header text-uppercase">
-        <p>Tue</p>
-        <p>27.08</p>
-      </div>
-      <div className="Column-body">
-        <div>
-          <span>10</span> | <span>6</span>
-        </div>
-        <img
-          className="img-fluid"
-          alt="image-weather"
-          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
-        />
-      </div>
-    </div>
-  );
+    axios.get(apiUrl).then(handleResponse);
+  }
 }
