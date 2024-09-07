@@ -31,7 +31,7 @@ export default function WeatherForecastDay(props) {
   }
 
   return (
-    <div className="col-2">
+    <div>
       {" "}
       <div className="Column-header text-uppercase">
         <p>{day()}</p>
